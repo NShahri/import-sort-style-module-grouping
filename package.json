@@ -32,8 +32,12 @@
     "prettier": "^1.13.7",
     "regenerator-runtime": "^0.12.0"
   },
+  "bin": {
+    "module-grouping": "./build/src/bin.js"
+  },
   "scripts": {
     "build": "./node_modules/.bin/babel . --out-dir build --only ./src",
+    "build:bin": "npm uninstall -g&&yarn build&&npm install -g",
     "test": "jest --testPathIgnorePatterns /build/ /node_modules/",
     "prettier": "prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js,*.js}\"",
     "lint": "eslint src"

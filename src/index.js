@@ -1,8 +1,8 @@
 // @flow
 import {extname} from 'path';
 
-import type {IStyleAPI, IStyleItem, IComparatorFunction, ISorterFunction} from 'import-sort-style';
 import type {IImport} from 'import-sort-parser';
+import type {IComparatorFunction, ISorterFunction, IStyleAPI, IStyleItem} from 'import-sort-style';
 
 function moduleFileType(...exts: string[]) {
     return imported => exts.some(ext => extname(imported.moduleName) === ext);

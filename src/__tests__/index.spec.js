@@ -1,7 +1,7 @@
-import * as parser from 'import-sort-parser-babylon';
 import {readFileSync} from 'fs';
-import {join} from 'path';
 import {sortImports} from 'import-sort';
+import * as parser from 'import-sort-parser-babylon';
+import {join} from 'path';
 
 import style from '../index';
 
