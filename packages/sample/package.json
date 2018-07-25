@@ -5,7 +5,9 @@
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
   "author": "Nima Shahri <https://github.com/NShahri>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.4.1"
+  },
   "devDependencies": {
     "import-sort-cli": "^5.2.0",
     "import-sort-style-module-grouping": "^0.0.1"
