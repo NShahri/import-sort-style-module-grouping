@@ -1,0 +1,23 @@
+{
+  "name": "import-sort-style-module-grouping-sample",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
+  "author": "Nima Shahri <https://github.com/NShahri>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "import-sort-cli": "^5.2.0",
+    "import-sort-style-module-grouping": "^0.0.1"
+  },
+  "importSort": {
+    ".js, .jsx, .es6, .es": {
+      "parser": "babylon",
+      "style": "module-grouping"
+    },
+    ".ts, .tsx": {
+      "parser": "typescript",
+      "style": "module-grouping"
+    }
+  }
+}
