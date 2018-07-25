@@ -6,6 +6,7 @@
   "author": "Nima Shahri <https://github.com/NShahri>",
   "license": "MIT",
   "dependencies": {
+    "import-sort-parser": "^5.0.0",
     "import-sort-style": "^5.0.0"
   },
   "devDependencies": {
@@ -30,12 +31,15 @@
     "import-sort-parser-babylon": "^5.0.0",
     "jest": "^23.4.1",
     "prettier": "^1.13.7",
-    "regenerator-runtime": "^0.12.0"
+    "regenerator-runtime": "^0.12.0",
+    "rimraf": "^2.6.2"
   },
   "scripts": {
-    "build": "npx babel . --out-dir build --only ./src  --ignore **/*.spec.js",
-    "test": "npx jest --testPathIgnorePatterns /build/ /node_modules/",
-    "prettier": "npx prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js,*.js}\"",
-    "lint": "npx eslint src"
+    "prepublish": "npm run build",
+    "prebuild": "rimraf build/",
+    "build": "babel . --out-dir build --only ./src  --ignore **/*.spec.js",
+    "test": "jest --testPathIgnorePatterns /build/ /node_modules/",
+    "prettier": "prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js,*.js}\"",
+    "lint": "eslint src"
   }
 }

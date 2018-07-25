@@ -1,5 +1,5 @@
 {
-  "name": "import-sort-style-module-grouping-cli",
+  "name": "module-grouping-cli",
   "version": "0.0.1",
   "main": "src/index.js",
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
@@ -28,14 +28,17 @@
     "flow-typed": "^2.4.0",
     "jest": "^23.4.1",
     "prettier": "^1.13.7",
-    "regenerator-runtime": "^0.12.0"
+    "regenerator-runtime": "^0.12.0",
+    "rimraf": "^2.6.2"
   },
   "scripts": {
-    "build": "npx babel . --out-dir build --only ./src  --ignore **/*.spec.js",
+    "prepublish": "npm run build",
+    "prebuild": "rimraf build/",
+    "build": "babel . --out-dir build --only ./src  --ignore **/*.spec.js",
     "build:bin": "npm uninstall -g&&yarn build&&npm install -g",
-    "test": "npx jest --testPathIgnorePatterns /build/ /node_modules/",
-    "prettier": "npx prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js,*.js}\"",
-    "lint": "npx eslint src"
+    "test": "jest --testPathIgnorePatterns /build/ /node_modules/",
+    "prettier": "prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js,*.js}\"",
+    "lint": "eslint src"
   },
   "dependencies": {
     "globby": "^8.0.1",
