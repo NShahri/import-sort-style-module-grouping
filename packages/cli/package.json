@@ -1,6 +1,6 @@
 {
   "name": "module-grouping-cli",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "src/index.js",
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
   "author": "Nima Shahri <https://github.com/NShahri>",
