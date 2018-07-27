@@ -24,7 +24,7 @@ const jsFiles = moduleFileType('', '.js', '.jsx', '.es6', '.es');
 
 const tsFiles = moduleFileType('.ts', '.tsx');
 
-const styleFiles = moduleFileType('', '.css', '.scss', '.less');
+const styleFiles = moduleFileType('.css', '.scss', '.less');
 
 export default function(styleApi: IStyleAPI): Array<IStyleItem> {
     const {and, isAbsoluteModule, isRelativeModule, moduleName, member, name, not, unicode} = styleApi;
