@@ -1,11 +1,25 @@
 {
   "name": "import-sort-style-module-grouping",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "build/src/index.js",
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
   "author": "Nima Shahri <https://github.com/NShahri>",
   "license": "MIT",
-  "keywords": ["sort", "imports", "es6", "group", "module", "grouping", "import-sort", "syle", "parser", "flow", "type", "absolute", "relative"],
+  "keywords": [
+    "sort",
+    "imports",
+    "es6",
+    "group",
+    "module",
+    "grouping",
+    "import-sort",
+    "syle",
+    "parser",
+    "flow",
+    "type",
+    "absolute",
+    "relative"
+  ],
   "dependencies": {
     "import-sort-parser": "^5.0.0",
     "import-sort-style": "^5.0.0"
