@@ -1,0 +1,12 @@
+{
+  "name": "import-sort-style-module-grouping-packages",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
+  "author": "Nima Shahri <https://github.com/NShahri>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true
+}

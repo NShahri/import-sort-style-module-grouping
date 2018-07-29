@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/flowtype",
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+    "flowtype"
+  ],
+  "globals": {
+
+  },
+  "rules": {
+    "no-console": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.spec.js"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}

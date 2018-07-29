@@ -1,0 +1,14 @@
+[ignore]
+.*/build/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+munge_underscores=true
+esproposal.optional_chaining=enable
+
+[strict]

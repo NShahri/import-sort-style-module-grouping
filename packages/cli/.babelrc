@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "@babel/preset-flow",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "8.9.3"
+        },
+        "shippedProposals": true
+      }
+    ]
+  ],
+  "plugins": ["@babel/plugin-proposal-optional-chaining"]
+}
