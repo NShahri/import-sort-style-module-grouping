@@ -1,30 +1,9 @@
 // @flow
-import {extname} from 'path';
 
-import type {IImport} from 'import-sort-parser';
 import type {IComparatorFunction, ISorterFunction, IStyleAPI, IStyleItem} from 'import-sort-style';
-
-function moduleFileType(...exts: string[]) {
-    return imported => exts.some(ext => extname(imported.moduleName) === ext);
-}
-
-function sortModuleFileExtension(comparator: IComparatorFunction): ISorterFunction {
-    return (firstImport: IImport, secondImport: IImport): number => {
-        const first = firstImport.moduleName;
-        const second = secondImport.moduleName;
-        return comparator(extname(first), extname(second));
-    };
-}
-
-function isTypeImport(imported: IImport): boolean {
-    return imported.type === 'import-type';
-}
-
-const jsFiles = moduleFileType('', '.js', '.jsx', '.es6', '.es');
-
-const tsFiles = moduleFileType('.ts', '.tsx');
-
-const styleFiles = moduleFileType('.css', '.scss', '.less');
+import {sortModuleFileExtension} from './sortModuleFileExtension';
+import {isJsFile, isStyleFile, isTsFile} from './moduleFileType';
+import {isTypeImport} from './isTypeImport';
 
 export default function(styleApi: IStyleAPI): Array<IStyleItem> {
     const {and, isAbsoluteModule, isRelativeModule, moduleName, member, name, not, unicode} = styleApi;
@@ -37,7 +16,7 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         // import * as Foo from "foo"
         // import _ from "foo"
         {
-            match: and(not(isTypeImport), isAbsoluteModule, jsFiles),
+            match: and(not(isTypeImport), isAbsoluteModule, isJsFile),
             sort: moduleName(unicode),
             sortNamedMembers: name(unicode),
         },
@@ -50,7 +29,7 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         // import Foo from "foo.ts"
         // import Foo from "foo.tsx"
         {
-            match: and(not(isTypeImport), isAbsoluteModule, tsFiles),
+            match: and(not(isTypeImport), isAbsoluteModule, isTsFile),
             sort: moduleName(unicode),
             sortNamedMembers: name(unicode),
         },
@@ -64,7 +43,7 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         // import scss from "foo.scss"
         // import less from "foo.less"
         {
-            match: and(not(isTypeImport), isAbsoluteModule, styleFiles),
+            match: and(not(isTypeImport), isAbsoluteModule, isStyleFile),
             sort: [sortModuleFileExtension(unicode), moduleName(unicode)],
             sortNamedMembers: name(unicode),
         },
@@ -101,7 +80,7 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         // import * as Foo from "../foo"
         // import _ from "../foo"
         {
-            match: and(not(isTypeImport), isRelativeModule, jsFiles),
+            match: and(not(isTypeImport), isRelativeModule, isJsFile),
             sort: moduleName(unicode),
             sortNamedMembers: name(unicode),
         },
@@ -114,7 +93,7 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         // import Foo from "../foo.tsx"
         // import Foo from "../foo.ts"
         {
-            match: and(not(isTypeImport), isRelativeModule, tsFiles),
+            match: and(not(isTypeImport), isRelativeModule, isTsFile),
             sort: moduleName(unicode),
             sortNamedMembers: name(unicode),
         },
@@ -128,7 +107,7 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         // import scss from "../foo.scss"
         // import less from "../foo.less"
         {
-            match: and(not(isTypeImport), isRelativeModule, styleFiles),
+            match: and(not(isTypeImport), isRelativeModule, isStyleFile),
             sort: [sortModuleFileExtension(unicode), moduleName(unicode)],
             sortNamedMembers: name(unicode),
         },
