@@ -2547,6 +2547,12 @@ import-sort-parser@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/import-sort-parser/-/import-sort-parser-5.0.0.tgz#9cbf02e4d672bd8056fe757ea81f86f6e1776a57"
 
+import-sort-style-module-grouping@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/import-sort-style-module-grouping/-/import-sort-style-module-grouping-0.0.1.tgz#a824d42dba9282e3122116ef0f5ec20764daedc0"
+  dependencies:
+    import-sort-style "^5.0.0"
+
 import-sort-style@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/import-sort-style/-/import-sort-style-5.0.0.tgz#6547e3792b33994394dd86eeb6df6826838ad97b"
