@@ -58,5 +58,9 @@ import-sort **/*.js --write
 ##Node.js (import-sort)
 [Click here](https://github.com/renke/import-sort#nodejs-import-sort) for using import-sort-style-module-grouping and import-sort in node.js
 
+
+##Sample project
+https://github.com/NShahri/import-sort-style-module-grouping/tree/master/packages/sample
+
 ##TODO
-* make group rules configurable
+* make grouping rules configurable

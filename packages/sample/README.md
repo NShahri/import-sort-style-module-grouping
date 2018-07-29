@@ -1,4 +1,4 @@
-# Sample for import-sort-style-module-grouping
+# Sample for module grouping
 
 ## Install
 ```
