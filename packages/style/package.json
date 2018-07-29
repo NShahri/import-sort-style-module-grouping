@@ -1,6 +1,6 @@
 {
   "name": "import-sort-style-module-grouping",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "build/src/index.js",
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
   "author": "Nima Shahri <https://github.com/NShahri>",
@@ -51,7 +51,7 @@
   },
   "scripts": {
     "prepublish": "npm run build",
-    "prebuild": "rimraf build/",
+    "prebuild": "npx rimraf build/",
     "build": "babel . --out-dir build --only ./src  --ignore **/*.spec.js",
     "test": "jest --testPathIgnorePatterns /build/ /node_modules/",
     "prettier": "prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js,*.js}\"",
