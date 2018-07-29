@@ -1,8 +1,11 @@
-import {IComparatorFunction, ISorterFunction} from 'import-sort-style';
-import type {IImport} from 'import-sort-parser';
+// @flow
+
 import {extname} from 'path';
 
-export function sortModuleFileExtension(comparator: IComparatorFunction): ISorterFunction {
+import type {IImport} from 'import-sort-parser';
+import type {IComparatorFunction, ISorterFunction} from 'import-sort-style';
+
+export default function sortModuleFileExtension(comparator: IComparatorFunction): ISorterFunction {
     return (firstImport: IImport, secondImport: IImport): number => {
         const first = firstImport.moduleName;
         const second = secondImport.moduleName;

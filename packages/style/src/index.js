@@ -1,9 +1,10 @@
 // @flow
 
-import type {IComparatorFunction, ISorterFunction, IStyleAPI, IStyleItem} from 'import-sort-style';
-import {sortModuleFileExtension} from './sortModuleFileExtension';
+import type {IStyleAPI, IStyleItem} from 'import-sort-style';
+
+import sortModuleFileExtension from './sortModuleFileExtension';
+import isTypeImport from './isTypeImport';
 import {isJsFile, isStyleFile, isTsFile} from './moduleFileType';
-import {isTypeImport} from './isTypeImport';
 
 export default function(styleApi: IStyleAPI): Array<IStyleItem> {
     const {and, isAbsoluteModule, isRelativeModule, moduleName, member, name, not, unicode} = styleApi;
