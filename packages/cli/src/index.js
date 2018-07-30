@@ -6,9 +6,10 @@ import globby from 'globby';
 import sortImports from 'import-sort';
 import {dirname, extname, relative} from 'path';
 import yargs from 'yargs';
+import chalk from 'chalk';
 
 import getAndCheckConfig from './getAndCheckConfig';
-import {handleFilePathError} from './handleFilePathError';
+import handleFilePathError from './handleFilePathError';
 
 yargs
     .usage(`Usage: import-sort [FILE] [OPTION]`)
@@ -16,7 +17,7 @@ yargs
     .describe('write', 'Edit files in-place.')
     .boolean('write')
 
-    .version(require('../package.json').version)
+    .version(require('../../package.json').version) // eslint-disable-line import/no-unresolved
     .alias('version', 'v')
 
     .help()
@@ -32,7 +33,6 @@ if (filePatterns.length === 0) {
 filePatterns = filePatterns.concat(['!**/node_modules/**', '!./node_modules/**']);
 
 const writeFiles = yargs.argv.write;
-const listDifferent = true;
 
 let filePaths = [];
 
@@ -46,11 +46,12 @@ try {
 }
 
 filePaths.forEach(filePath => {
+    const start = Date.now();
+
     const unsortedCode = readFileSync(filePath).toString('utf8');
 
     try {
-        const config = getAndCheckConfig(extname(filePath), dirname(filePath));
-        const {parser, style} = config;
+        const {parser, style} = getAndCheckConfig(extname(filePath), dirname(filePath));
 
         const sortResult = sortImports(unsortedCode, parser, style, filePath);
 
@@ -62,13 +63,10 @@ filePaths.forEach(filePath => {
             writeFileSync(filePath, sortedCode, {encoding: 'utf-8'});
         }
 
-        if (listDifferent && isDifferent) {
-            process.exitCode = 1;
-            console.log(filePath);
-        }
-
-        if (!writeFiles && !listDifferent) {
-            process.stdout.write(sortedCode);
+        if (isDifferent) {
+            console.log(`${filePath} ${Date.now() - start}ms`);
+        } else {
+            console.log(`${chalk.grey(filePath)} ${Date.now() - start}ms`);
         }
     } catch (e) {
         handleFilePathError(filePath, e);
