@@ -1,6 +1,6 @@
 {
   "name": "module-grouping-cli",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "main": "src/index.js",
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
   "author": "Nima Shahri <https://github.com/NShahri>",
@@ -37,10 +37,11 @@
     "build": "babel . --out-dir build --only ./src  --ignore **/*.spec.js",
     "build:bin": "npm uninstall -g&&yarn build&&npm install -g",
     "test": "jest --testPathIgnorePatterns /build/ /node_modules/",
-    "prettier": "prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js,*.js}\"",
+    "prettier": "npx prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js,*.js}\"",
     "lint": "eslint src"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
     "globby": "^8.0.1",
     "import-sort": "^5.2.0",
     "import-sort-config": "^5.2.0",
