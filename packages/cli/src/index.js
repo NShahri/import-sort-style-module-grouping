@@ -1,24 +1,40 @@
 #!/usr/bin/env node
+// @flow
 
 import {readFileSync, writeFileSync} from 'fs';
-import * as globby from 'globby';
+import globby from 'globby';
 import sortImports from 'import-sort';
-import * as parser from 'import-sort-parser-babylon';
-import style from 'import-sort-style-module-grouping';
-import {relative} from 'path';
+import {dirname, extname, relative} from 'path';
+import yargs from 'yargs';
 
-function handleFilePathError(filePath, e) {
-    console.error(`${filePath}:`);
-    console.error(e.toString());
-    process.exitCode = 2;
+import getAndCheckConfig from './getAndCheckConfig';
+import {handleFilePathError} from './handleFilePathError';
+
+yargs
+    .usage(`Usage: import-sort [FILE] [OPTION]`)
+
+    .describe('write', 'Edit files in-place.')
+    .boolean('write')
+
+    .version(require('../package.json').version)
+    .alias('version', 'v')
+
+    .help()
+    .alias('help', 'h');
+
+let filePatterns = yargs.argv._;
+
+if (filePatterns.length === 0) {
+    yargs.showHelp();
+    process.exit(1);
 }
 
-const writeFiles = true;
+filePatterns = filePatterns.concat(['!**/node_modules/**', '!./node_modules/**']);
+
+const writeFiles = yargs.argv.write;
 const listDifferent = true;
 
-const filePatterns = 'src/**/*.js';
-
-let filePaths;
+let filePaths = [];
 
 try {
     filePaths = globby
@@ -29,15 +45,13 @@ try {
     process.exit(2);
 }
 
-if (filePaths.length === 0) {
-    console.error(`No files found for the given patterns: ${filePatterns}`);
-    process.exit(2);
-}
-
 filePaths.forEach(filePath => {
     const unsortedCode = readFileSync(filePath).toString('utf8');
 
     try {
+        const config = getAndCheckConfig(extname(filePath), dirname(filePath));
+        const {parser, style} = config;
+
         const sortResult = sortImports(unsortedCode, parser, style, filePath);
 
         const {code: sortedCode, changes} = sortResult;

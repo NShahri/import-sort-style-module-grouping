@@ -43,7 +43,10 @@
   "dependencies": {
     "globby": "^8.0.1",
     "import-sort": "^5.2.0",
+    "import-sort-config": "^5.2.0",
     "import-sort-parser-babylon": "^5.2.0",
-    "import-sort-style-module-grouping": "^0.0.1"
+    "import-sort-parser-typescript": "^5.0.0",
+    "import-sort-style-module-grouping": "^0.0.1",
+    "yargs": "^12.0.1"
   }
 }
