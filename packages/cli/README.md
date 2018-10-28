@@ -3,6 +3,54 @@ A simple cli tool for sorting imported modules without configuration based on
 [import-sort](https://www.npmjs.com/package/import-sort) and 
 [import-sort-style-module-grouping](https://www.npmjs.com/package/import-sort-style-module-grouping)
 
+## Grouping Rules:
+Running this package will groups the es6 imports based on the following order:
+
+* Absolute path dependencies in the following order
+    * javascript (.js, .jsx, .es6, .es) modules
+    * typescript (.ts, .tsx) modules
+    * styles (.css, .scss, .less) modules
+    * any other type of modules
+    * type imports (import type ... from '...';)
+* Relative path dependencies in the following order
+    * javascript (.js, .jsx, .es6, .es) modules
+    * Relative typescript (.ts, .tsx) modules
+    * Relative styles (.css, .scss, .less) modules
+    * Relative any other type of modules
+    * Relative type imports (import type ... from './..';)
+    
+
+## Sample
+When a file imports packages in the following order:
+```js
+import React from 'react';
+import Redux from 'redux';
+import type {Node} from 'react';
+import theme from 'mdc/index.scss';
+import css from './button.module.css';
+import css from './dropdown.module.css';
+import {ReactComponent} from './logo.svg';
+import Button from './button';
+import DropDown from './dropdown';
+```    
+
+The result will be:
+```js
+import React from 'react';
+import Redux from 'redux';
+
+import theme from 'mdc/index.scss';
+
+import type {Node} from 'react';
+
+import Button from './button';
+import DropDown from './dropdown';
+
+import css from './button.module.css';
+import css from './dropdown.module.css';
+
+import {ReactComponent} from './logo.svg';
+```
 ## Install
 ```
 yarn install module-grouping-cli --dev
