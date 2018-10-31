@@ -51,6 +51,35 @@ import css from './dropdown.module.css';
 
 import {ReactComponent} from './logo.svg';
 ```
+
+## Run on git pre-commit
+
+```
+yarn add lint-staged husky --dev
+// OR
+npm install --save-dev lint-staged husky
+```
+
+```json
+// package.json
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "module-grouping --write",
+      "git add"
+    ],
+    "yarn.lock": [
+      "git rm --cached"
+    ]
+  }
+}
+```
+
 ## Install
 ```
 yarn install module-grouping-cli --dev
