@@ -1,6 +1,6 @@
 # module-grouping-cli
-A simple cli tool for sorting imported modules without configuration based on 
-[import-sort](https://www.npmjs.com/package/import-sort) and 
+A simple cli tool for sorting imported modules without configuration based on
+[import-sort](https://www.npmjs.com/package/import-sort) and
 [import-sort-style-module-grouping](https://www.npmjs.com/package/import-sort-style-module-grouping)
 
 ## Grouping Rules:
@@ -18,7 +18,7 @@ Running this package will groups the es6 imports based on the following order:
     * Relative styles (.css, .scss, .less) modules
     * Relative any other type of modules
     * Relative type imports (import type ... from './..';)
-    
+
 
 ## Sample
 When a file imports packages in the following order:
@@ -32,7 +32,7 @@ import css from './dropdown.module.css';
 import {ReactComponent} from './logo.svg';
 import Button from './button';
 import DropDown from './dropdown';
-```    
+```
 
 The result will be:
 ```js
@@ -56,8 +56,8 @@ import {ReactComponent} from './logo.svg';
 
 ```
 yarn add lint-staged husky --dev
-// OR
-npm install --save-dev lint-staged husky
+# OR
+npm install lint-staged husky --save-dev
 ```
 
 ```json
@@ -72,9 +72,6 @@ npm install --save-dev lint-staged husky
     "*.js": [
       "module-grouping --write",
       "git add"
-    ],
-    "yarn.lock": [
-      "git rm --cached"
     ]
   }
 }
@@ -82,28 +79,24 @@ npm install --save-dev lint-staged husky
 
 ## Install
 ```
-yarn install module-grouping-cli --dev
-```
-
-Or
-
-```
-npm onstall module-grouping-cli --save-dev
+yarn add module-grouping-cli --dev
+# Or
+npm install module-grouping-cli --save-dev
 ```
 
 ## Usage
 Running the following command will display the result of changes after sorting ES2015 imports:
 
 ```
-npx module-grouping-cli **/*.js
+npx module-grouping **/*.js
 ```
 
 Use `--write` to update files in-place
 ```
-npx module-grouping-cli **/*.js --write
+npx module-grouping **/*.js --write
 ```
 
-Installing and running this command it is exactly the same as 
+Installing and running this command it is exactly the same as
 installing [these](https://www.npmjs.com/package/import-sort-style-module-grouping#install) dependencies and
-running [this](https://www.npmjs.com/package/import-sort-style-module-grouping#config) 
-configuration for import-sort. 
+running [this](https://www.npmjs.com/package/import-sort-style-module-grouping#config)
+configuration for import-sort.

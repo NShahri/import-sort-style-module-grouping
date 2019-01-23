@@ -3,7 +3,7 @@
 ## Install
 ```
 yarn install
-OR
+# OR
 npm install
 ```
 
@@ -28,7 +28,7 @@ Add the following configuration to `package.json`
 
 Running the following command will display the result of changes after sorting ES2015 imports.
 ```
-import-sort src/index.js 
+import-sort src/index.js
 ```
 [For more command line options click here.](https://github.com/renke/import-sort#command-line-import-sort-cli)
 

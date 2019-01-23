@@ -20,7 +20,7 @@ Running this package will groups the es6 imports based on the following order:
 ## Install
 ```
 yarn add import-sort-cli import-sort-parser-babylon import-sort-style-module-grouping --dev
-OR
+# OR
 npm install import-sort-cli import-sort-parser-babylon import-sort-style-module-grouping --save-dev
 ```
 

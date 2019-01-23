@@ -12,12 +12,12 @@ import getAndCheckConfig from './getAndCheckConfig';
 import handleFilePathError from './handleFilePathError';
 
 yargs
-    .usage(`Usage: import-sort [FILE] [OPTION]`)
+    .usage(`Usage: module-grouping [FILE] [OPTION]`)
 
     .describe('write', 'Edit files in-place.')
     .boolean('write')
 
-    .version(require('../../package.json').version) // eslint-disable-line import/no-unresolved
+    .version(require('../package.json').version) // eslint-disable-line import/no-unresolved
     .alias('version', 'v')
 
     .help()

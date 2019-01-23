@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "import-sort-cli": "^5.2.0",
-    "import-sort-style-module-grouping": "^0.0.1"
+    "import-sort-style-module-grouping": "^0.2.8"
   },
   "importSort": {
     ".js, .jsx, .es6, .es": {
