@@ -1,13 +1,15 @@
 {
   "name": "module-grouping-cli",
-  "version": "0.1.0",
-  "main": "src/index.js",
+  "version": "0.2.2",
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
   "author": "Nima Shahri <https://github.com/NShahri>",
   "license": "MIT",
   "bin": {
     "module-grouping": "./build/src/index.js"
   },
+  "files": [
+    "build/**/*"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.54",
     "@babel/core": "^7.0.0-beta.54",
