@@ -1,6 +1,6 @@
 {
   "name": "module-grouping-cli",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
   "author": "Nima Shahri <https://github.com/NShahri>",
   "license": "MIT",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.54",
     "@babel/core": "^7.0.0-beta.54",
+    "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.54",
     "@babel/preset-env": "^7.0.0-beta.54",
     "@babel/preset-flow": "^7.0.0-beta.54",
@@ -26,25 +27,25 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
-    "flow-bin": "^0.85.0",
+    "flow-bin": "^0.91.0",
     "flow-typed": "^2.4.0",
     "jest": "^23.4.1",
     "prettier": "^1.13.7",
-    "regenerator-runtime": "^0.12.0",
+    "regenerator-runtime": "^0.13.1",
     "rimraf": "^2.6.2"
   },
   "scripts": {
     "prepublish": "npm run build",
     "prebuild": "rimraf build/",
     "build": "babel . --out-dir build --only ./src  --ignore **/*.spec.js",
-    "build:bin": "npm uninstall -g&&yarn build&&npm install -g",
+    "start": "babel-node src/index.js",
     "test": "jest --testPathIgnorePatterns /build/ /node_modules/",
-    "prettier": "npx prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js,*.js}\"",
+    "prettier": "prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js}\"",
     "lint": "eslint src"
   },
   "dependencies": {
     "chalk": "^2.4.1",
-    "globby": "^8.0.1",
+    "globby": "^9.0.0",
     "import-sort": "^5.2.0",
     "import-sort-config": "^5.2.0",
     "import-sort-parser-babylon": "^5.2.0",
