@@ -1,11 +1,11 @@
 {
   "name": "module-grouping-cli",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
   "author": "Nima Shahri <https://github.com/NShahri>",
   "license": "MIT",
   "bin": {
-    "module-grouping": "./build/src/index.js"
+    "module-grouping": "./build/index.js"
   },
   "files": [
     "build/**/*"
@@ -37,7 +37,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "prebuild": "rimraf build/",
-    "build": "babel . --out-dir build --only ./src  --ignore **/*.spec.js",
+    "build": "babel src --out-dir build --ignore **/*.spec.js",
     "start": "babel-node src/index.js",
     "test": "jest --testPathIgnorePatterns /build/ /node_modules/",
     "prettier": "prettier --config ./.prettierrc --write \"src/{**/!(node_modules|build)/*.js}\"",
