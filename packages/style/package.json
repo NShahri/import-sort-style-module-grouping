@@ -1,6 +1,6 @@
 {
   "name": "import-sort-style-module-grouping",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "build/index.js",
   "repository": "https://github.com/NShahri/import-sort-style-module-grouping.git",
   "author": "Nima Shahri <https://github.com/NShahri>",
@@ -49,6 +49,9 @@
     "regenerator-runtime": "^0.13.1",
     "rimraf": "^2.6.2"
   },
+  "files": [
+    "build/**/*"
+  ],
   "scripts": {
     "prepublish": "npm run build",
     "prebuild": "npx rimraf build/",
